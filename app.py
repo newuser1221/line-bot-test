@@ -9,6 +9,7 @@ from linebot.exceptions import (
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage, StickerSendMessage, ImageSendMessage
 )
+from linebot.exceptions import LineBotApiError #新加的
 
 app = Flask(__name__)
 
@@ -35,7 +36,7 @@ def callback():
     return 'OK'
 
 
-@handler.add(MessageEvent, message=TextMessage)#回聲功能
+@handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
     r = '我看不懂你說甚麼'
@@ -77,7 +78,9 @@ def handle_message(event):
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=r))
-    
+try: #新加的
+    line_bot_api.reply_message('Uf5c869d53bf80b476aeeb21280e7b37f', TextSendMessage(text='Hello World!'))
+except LineBotApiError as e:   
 if __name__ == "__main__":
     app.run()
 
