@@ -40,13 +40,13 @@ def handle_message(event):
     msg = event.message.text
     r = '我看不懂你說甚麼'
 
-    if 'hi' or 'HI' or '嗨' or 'Hi' in msg:
+    if 'hi' in msg:
         r = 'hi'
-    elif '你吃飯了嗎' or '妳吃飯了嗎' in msg:
+    elif '你吃飯了嗎' in msg:
         r = '還沒'
-    elif '你是誰' or '妳是誰' in msg:
+    elif '你是誰' in msg:
         r = '我是line bot'
-    elif '定位' or '訂位' or '預約' in msg:
+    elif  '訂位' in msg:
         r = '請問您想訂位的時間?'
 
 
