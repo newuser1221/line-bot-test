@@ -40,6 +40,19 @@ def handle_message(event):
     msg = event.message.text
     r = '我看不懂你說甚麼'
 
+    if '圖片' in msg:
+        image_message = ImageSendMessage(
+            original_content_url='https://example.com/original.jpg',
+            preview_image_url='https://example.com/preview.jpg')
+        
+        line_bot_api.reply_message(
+        event.reply_token,
+        image_message)
+
+        return    
+
+
+
     if '貼圖' in msg:
         sticker_message = StickerSendMessage(
             package_id='2',sticker_id='23')
